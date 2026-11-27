@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "OTS-ADSB-SDR-Plugin"
+version = "0.1.0"
+description = "Aircraft received over the air (ADS-B, RTL-SDR + readsb/dump1090) as map markers in OpenTAKServer"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+authors = [{ name = "boberbyte" }]
+# No dependencies of its own: pika, pyyaml and flask are already in the
+# OpenTAKServer venv. The decoding is done by the external program readsb
+# (or dump1090-fa).
+dependencies = []
+
+[project.urls]
+Documentation = "https://github.com/boberbyte/OTS-ADSB-SDR-Plugin#readme"
+Repository = "https://github.com/boberbyte/OTS-ADSB-SDR-Plugin"
+
+[project.entry-points."opentakserver.plugin"]
+ots_adsb_sdr_plugin = "ots_adsb_sdr_plugin.app:AdsbSdrPlugin"
+
+[tool.setuptools]
+packages = ["ots_adsb_sdr_plugin"]
